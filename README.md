@@ -1,8 +1,18 @@
-# JTY
+# JTY - Json To Yaml
 
-**TODO: Add description**
+## Description
+JSON to YAML parser written in Elixir
+
+Don't hesitate to contribute or open issues
 
 ## Installation
+
+### Standalone program
+
+Clone onto your machine and use as MIX project
+
+### Hex
+todo: add to hex
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `jsontoyaml` to your list of dependencies in `mix.exs`:
