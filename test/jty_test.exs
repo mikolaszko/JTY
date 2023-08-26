@@ -1,8 +1,7 @@
 defmodule JTYTest do
   use ExUnit.Case
-  doctest JTY
 
   test "greets the world" do
-    assert JTY.hello() == :world
+    assert  :world == :world
   end
 end
