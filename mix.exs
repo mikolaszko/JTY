@@ -4,25 +4,32 @@ defmodule JTY.MixProject do
   def project do
     [
       app: :jsontoyaml,
-      version: "0.1.0",
+      version: "0.2.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      package: package(),
+      deps: deps(),
+      description: description(),
+      source_url: "https://github.com/mikolaszko/JTY",
+      name: "JTY"
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
-  def application do
-    [
-      extra_applications: [:logger]
-    ]
+  defp description do
+    "Simple, light-weight and dependency free JSON to YAML parser/formatter"
   end
 
-  # Run "mix help deps" to learn about dependencies.
-  defp deps do
+  def deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:ex_doc, "~> 0.24", only: :dev, runtime: false},
+    ] 
+  end
+
+  defp package do
+    [
+      name: "JTY",
+      licenses: ["MIT"],
+      links: %{"Github" => "https://github.com/mikolaszko/JTY"}
     ]
   end
 end

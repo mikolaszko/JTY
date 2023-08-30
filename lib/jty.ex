@@ -1,8 +1,4 @@
 defmodule JTY do
-  @moduledoc """
-  Simple parser from JSON file to YAML file
-  """
-
   defguardp is_letter(c) when c in ?a..?z or c in ?A..?Z or c == ?_
   defguardp is_digit(c) when c in ?0..?9
   defguardp is_whitespace(c) when c in ~c[ \n\t] 
