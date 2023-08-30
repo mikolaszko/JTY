@@ -5,7 +5,7 @@ defmodule JTY do
 
   defguardp is_letter(c) when c in ?a..?z or c in ?A..?Z or c == ?_
   defguardp is_digit(c) when c in ?0..?9
-  defguardp is_whitespace(c) when c in ~c[ ] 
+  defguardp is_whitespace(c) when c in ~c[ \n\t] 
 
   def parse(path, dest) do
     open_file_and_trim(path) |> reformat([]) |> create_yaml_file(dest)
@@ -18,13 +18,10 @@ defmodule JTY do
           String.graphemes(item) |> 
           Enum.map(
             fn c ->
-              case c do
-                ":" -> tokenize(c)
-                _ -> c
+              cond do 
+              true -> tokenize(c)
               end
-          end) |>
-          IO.puts()
-          item
+          end)
     end)
   end
 
@@ -46,5 +43,15 @@ defmodule JTY do
     end)
   end
 
-  defp tokenize(<<":">>), do: "\n"
+  defp tokenize(<<":">>), do: ":\n"
+  defp tokenize(c) when is_letter(c), do: c 
+  defp tokenize(c) when is_digit(c), do: c 
+  defp tokenize(c) when is_whitespace(c), do: c 
+  defp tokenize(<<"-">>), do: "-"
+  defp tokenize(<<"{">>), do: ""
+  defp tokenize(<<"}">>), do: ""
+  defp tokenize(<<"[">>), do: ""
+  defp tokenize(<<"]">>), do: ""
+  defp tokenize(<<",">>), do: "\n"
+  defp tokenize(c), do: c 
 end
